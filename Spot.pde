@@ -1,39 +1,33 @@
 class Spot
 {
   int x, y;
-  float f, g, h;
+  float f, g, h;  //variables defining value of cell (sum, real dist. from start, straight line dist. to end)
   Spot parrent=null;
-  ArrayList<Spot> nbrs = new ArrayList<Spot>();
+  ArrayList<Spot> nbrs = new ArrayList<Spot>();  //eighbors of cell
   boolean[] walls={true,true,true,true};
   boolean visited=false;
   
-  Spot(int x,int y)
+  Spot(int x,int y) //constructor
   {
     this.x=x;
     this.y=y;
     f=0;g=0;h=0;
   }
   
-  void show(char mode)
+  void show(char mode) //drawing function
   {
     noStroke();
-        if(mode=='c')
-        {
-          fill(255,0,0);
-          ellipse(this.x*gw+8,this.y*gh+8,8,8);
-        }
-        if(mode=='o')
-        {
-          fill(0,255,0);
-          ellipse(this.x*gw+8,this.y*gh+8,8,8);
-        }
-        if(mode=='r')
-        {
-            fill(255);
-          //rect(this.x*gw,this.y*gh,gw,gh);
-          rect(this.x*gw,this.y*gh,gw,gh);
-        }
-        if(mode=='p')
+        //if(mode=='c')  
+        //{
+        //  fill(255,0,0);
+        //  ellipse(this.x*gw+8,this.y*gh+8,8,8);
+        //}
+        //if(mode=='o')
+        //{
+        //  fill(0,255,0);
+        //  ellipse(this.x*gw+8,this.y*gh+8,8,8);
+        //}
+        if(mode=='p') //showing cell as part of the path
         {
             fill(255);
             stroke(255);
@@ -64,7 +58,7 @@ class Spot
             strokeWeight(1);
             
         }
-        if(mode=='w')
+        if(mode=='w') //showing cell as part of grid (walls)
         {
           stroke(255);
           if(walls[0])
@@ -78,6 +72,7 @@ class Spot
         }
   }
   
+  //finding neighbors, witch aren't separated by wall (for pathfinding)
   void findN()
   {
     if(x>0)
@@ -94,6 +89,7 @@ class Spot
       nbrs.add(grid[x][y+1]);
   }
   
+  //finding neigbors witch aren't visited yet (for generating maze)
   Spot neighbors()
    {
      ArrayList<Spot> N = new ArrayList<Spot>();
