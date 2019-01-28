@@ -20,6 +20,6 @@ Program składa się z kodu głównago (BigBotBattle) i klasy (Spot)
 Program podczas genereownia:  
 ![](Pic_03.PNG)  
 Wygenerowany labirynt:  
-![](Pic_04.jpg)  
+![](Pic_05.jpg)  
 Znaleziona ścieżka:  
-![](Pic_05.jpg)
+![](Pic_04.jpg)
